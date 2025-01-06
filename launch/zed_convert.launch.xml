@@ -1,0 +1,11 @@
+<launch>
+    <arg name="input/zed_objects" default="/sensing/camera/zed/zed_node/obj_det/objects"/>
+    <arg name="output/object" default="/converted_zed_to_autoware"/>
+
+    <group>
+        <node pkg="zed_convert" exec="zed_convert_node" name="zed_convert" output="screen">
+            <remap from="input/zed_objects" to="$(var input/zed_objects)"/>
+            <remap from="output/object" to="$(var output/object)"/>
+        </node>
+    </group>
+</launch>
